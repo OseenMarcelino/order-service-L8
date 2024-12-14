@@ -102,7 +102,7 @@ jobs:
           DEPLOYMENT_NAME: ${{ vars.DEPLOYMENT_NAME }}
           CONTAINER_NAME: ${{ vars.CONTAINER_NAME }}
         run: |
-          echo "$KUBE_CONFIG_DATA" | base64 -d > $HOME/.kube/config
+          echo "$KUBE_CONFIG_DATA" | base64 -d > kubeconfig
           export KUBECONFIG=kubeconfig
           kubectl set image deployment/$DEPLOYMENT_NAME $CONTAINER_NAME=$DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
           kubectl rollout restart deployment/$DEPLOYMENT_NAME
